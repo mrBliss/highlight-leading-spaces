@@ -73,7 +73,20 @@ When `highlight-leading-spaces--enabled' is non-nil, highlight
 the leading spaces in the region from BEG to END.  The third
 argument LOUDLY is ignored."
   (when highlight-leading-spaces--enabled
-    (let ((inhibit-point-motion-hooks t))
+    (let ((inhibit-point-motion-hooks t)
+          ;; When consecutive characters have the same string as the display
+          ;; text property, they will be treated as one unit. The undesired
+          ;; result of this is that all n leading spaces on one line are
+          ;; replaced by just one `highlight-leading-spaces-char' instead of
+          ;; n, consequently, the indentation disappears. To avoid this, we
+          ;; use `make-string' to allocate two different one char strings. We
+          ;; then alternate between the two strings when adding the text
+          ;; properties so that no two consecutive highlighted spaces have the
+          ;; same display string.
+          (str1 (make-string 1 highlight-leading-spaces-char))
+          (str2 (make-string 1 highlight-leading-spaces-char))
+          ;; We toggle this bool to alternate between str1 and str2.
+          (which-str t))
       (with-silent-modifications
         (goto-char beg)
         ;; Search for the first leading space.
@@ -86,16 +99,9 @@ argument LOUDLY is ignored."
              ;; display text property of the leading space.
              (if (eq 32 highlight-leading-spaces-char)
                  '(face highlight-leading-spaces)
-               ;; When consecutive characters have the same string as the
-               ;; display text property, they will be treated as one unit. The
-               ;; undesired result of this is that all n leading spaces on one
-               ;; line are replaced by just one
-               ;; `highlight-leading-spaces-char' instead of n. To avoid this,
-               ;; we use `make-string' to allocate a different one char string
-               ;; for each text property.
-               ;; TODO alternate between two strings
                `(face highlight-leading-spaces display
-                      ,(make-string 1 highlight-leading-spaces-char))))
+                      ,(if (setq which-str (not which-str))
+                           str1 str2))))
             (forward-char 1)))))))
 
 

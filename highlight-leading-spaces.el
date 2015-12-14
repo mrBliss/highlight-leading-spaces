@@ -43,6 +43,11 @@
 ;;
 ;;     (add-hook 'prog-mode-hook 'highlight-leading-spaces-mode)
 
+;; This minor-mode is quite efficient because it doesn't use overlays but text
+;; properties for the leading spaces. Furthermore, the highlights are
+;; correctly and efficiently kept up-to-date by plugging in to font-lock, not
+;; by adding various hooks.
+
 ;;; Code:
 
 

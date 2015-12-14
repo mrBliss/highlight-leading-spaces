@@ -21,6 +21,11 @@ with can be customised by changing ``highlight-leading-spaces-char``. If you
 do not wish to them to be replaced with a special character, set it to a
 space.
 
+This minor-mode is quite efficient because it doesn't use overlays but text
+properties for the leading spaces. Furthermore, the highlights are correctly
+and efficiently kept up-to-date by plugging in to font-lock, not by adding
+various hooks.
+
 
 Installation
 ============

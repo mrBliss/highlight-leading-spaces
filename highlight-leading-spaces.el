@@ -94,7 +94,8 @@ argument LOUDLY is ignored."
                ;; we use `make-string' to allocate a different one char string
                ;; for each text property.
                ;; TODO alternate between two strings
-               `(face highlight-leading-spaces display ,(make-string 1 ?·))))
+               `(face highlight-leading-spaces display
+                      ,(make-string 1 highlight-leading-spaces-char))))
             (forward-char 1)))))))
 
 

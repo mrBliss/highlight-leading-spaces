@@ -53,7 +53,7 @@
 
 (defgroup highlight-leading-spaces nil
   "Highlight leading spaces."
-  :group 'emacs)
+  :group 'basic-faces)
 
 (defcustom highlight-leading-spaces-char ?·
   "Character used to replace leading spaces.
@@ -148,4 +148,5 @@ argument LOUDLY is ignored."
     (font-lock-fontify-buffer)))
 
 
+(provide 'highlight-leading-spaces)
 ;;; highlight-leading-spaces.el ends here

@@ -1,6 +1,6 @@
-==========================
- highlight-leading-spaces
-==========================
+==================================
+ highlight-leading-spaces |melpa|
+==================================
 
 Overview
 ========
@@ -30,6 +30,35 @@ various hooks.
 Installation
 ============
 
+MELPA_
+------
+
+1. Install_ the ``highlight-leading-spaces`` package.
+
+2. Use the ``highlight-leading-spaces-mode`` hook to enable this minor-mode:
+
+   .. code:: emacs-lisp
+
+      (add-hook 'prog-mode-hook 'highlight-leading-spaces-mode)
+
+
+use-package_
+------------
+
+Users of `use-package`_ can add the following lines to their config:
+
+.. code:: emacs-lisp
+
+   (use-package highlight-leading-spaces
+     :ensure t
+     :defer t
+     :init (add-hook 'prog-mode-hook 'highlight-leading-spaces-mode))
+
+Manual
+------
+
+Download this package and add the following lines to your config.
+
 .. code:: emacs-lisp
 
    (add-to-list 'load-path "/path/to/highlight-leading-spaces")
@@ -45,3 +74,8 @@ Distributed under the `GNU General Public License <LICENSE>`__.
 
 .. _whitespace.el: http://www.emacswiki.org/emacs/WhiteSpace
 .. |screenshot| image:: https://raw.githubusercontent.com/mrBliss/highlight-leading-spaces/master/screenshot.png
+.. _MELPA: http://melpa.org/
+.. _Install: http://melpa.org/#/getting-started
+.. _use-package: https://github.com/jwiegley/use-package
+.. |melpa| image:: http://melpa.org/packages/highlight-leading-spaces-badge.svg
+           :target: http://melpa.org/#/highlight-leading-spaces

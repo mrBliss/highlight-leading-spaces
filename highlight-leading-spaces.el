@@ -35,8 +35,8 @@
 
 ;; The face to highlight leading spaces with can be customised by changing the
 ;; highlight-leading-spaces face.  The character to replace leading spaces
-;; with can be customised by changing `highlight-leading-spaces-char'. If do
-;; not wish to them to be replaced with a special character, set it to a
+;; with can be customised by changing `highlight-leading-spaces-char'.  If you
+;; do not wish to them to be replaced with a special character, set it to a
 ;; space.
 
 ;; Suggested usage:
@@ -44,7 +44,7 @@
 ;;     (add-hook 'prog-mode-hook 'highlight-leading-spaces-mode)
 
 ;; This minor-mode is quite efficient because it doesn't use overlays but text
-;; properties for the leading spaces. Furthermore, the highlights are
+;; properties for the leading spaces.  Furthermore, the highlights are
 ;; correctly and efficiently kept up-to-date by plugging in to font-lock, not
 ;; by adding various hooks.
 
